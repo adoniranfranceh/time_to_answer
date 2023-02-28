@@ -1,0 +1,13 @@
+<h1>Welcome</h1>
+
+<% if user_signed_in? %>
+  <p>Usuário ESTA logado / <%=current_user.email%> </p>
+<% else %>
+  <p>Usuário NÃO está logado</p>
+<% end %>
+
+<% if admin_signed_in? %>
+  <p>Administrador ESTA registrado / <%=current_admin.email%> </p>
+<% else %>
+  <p>Administrador NÃO está logado</p>
+<% end %>
