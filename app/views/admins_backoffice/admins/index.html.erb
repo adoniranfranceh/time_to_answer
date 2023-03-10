@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-  <h1 class="page-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Listing Admins</font></font>
+  <h1 class="page-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><%= t('messages.listing', model: @admins.model_name.human(count:2))%></font></font>
   </h1>
 </div>
 <div class="table-responsive">
@@ -7,7 +7,7 @@
       <thead>
           <tr>
               <th>#</th>
-              <th>Email</th>
+              <th><%= traslate_field(@admins, :email) %></th>
               <td> <%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle" do %>  
                 <i class="fa fa-plus"></i>
                 <% end %>
@@ -23,7 +23,7 @@
               <%= link_to edit_admins_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do%>
                 <i class="fa fa-edit"></i>
               <% end %>
-              <%= link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: "Are you sure?"} do %>
+              <%= link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: t('messages.confirm_with', intem: admin.model_name.human)} do %>
                 <i class="fa fa-minus"></i>
               <% end %>
             </td>                    

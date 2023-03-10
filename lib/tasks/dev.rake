@@ -19,6 +19,8 @@ namespace :dev do
 
   show_spinner("Cadastrando assuntos padrões...") {%x(rails dev:add_subjects)}
 
+  show_spinner("Cadastrando perguntas e respostas...") {%x(rails dev:add_answers_and_questions)}
+
   end
   
   desc "Adiciona o administrador padrão"
@@ -42,33 +44,71 @@ namespace :dev do
    end
 
 
-   desc "Adiciona o usuário padrão"
-   task add_default_user: :environment do
-    User.create!(
-      email: 'user@user.com',
-      password: DEFAULT_PASSWORD,
-      password_confirmation: DEFAULT_PASSWORD
-    )
-   end
+  desc "Adiciona o usuário padrão"
+  task add_default_user: :environment do
 
-   desc "Adiciona Assuntos Padrões"
-   task add_subjects: :environment do
-     file_name = "subjects.txt"
-     file_path = File.join(DEFAULT_FILES_PATH, file_name)
+  User.create!(
+    email: 'user@user.com',
+    password: DEFAULT_PASSWORD,
+    password_confirmation: DEFAULT_PASSWORD
+  )
+  end
 
-     File.open(file_path, "r").each do |line|
-       Subject.create!(description: line.strip)
-     end  
-   end
+  desc "Adiciona Assuntos Padrões"
+  task add_subjects: :environment do
+  file_name = "subjects.txt"
+  file_path = File.join(DEFAULT_FILES_PATH, file_name)
+
+  File.open(file_path, "r").each do |line|
+    Subject.create!(description: line.strip)
+  end  
+  end
+
+  desc "Adiciona perguntas e respostas"
+  task add_answers_and_questions: :environment do
+    Subject.all.each do |subject|
+      rand(5..10).times do |i|
+
+       params = create_question_params(subject)
+       answer_array = params[:question][:answers_attributes]
+
+       add_answer(answer_array)
+       elect_true(answer_array)
+
+       Question.create!(params[:question])
+      end
+    end
+  end
+
   private
+
+  def create_question_params(subject = Subject.all.sample)
+    { question: {description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+         subject: subject, 
+         answers_attributes: []
+       }
+     }
+  end
+
+  def create_answer_params(correct = false)
+    { description: Faker::Lorem.sentence, correct: correct }
+  end
+
+  def add_answer(answer_array = [])
+    rand(2..5).times do |j|
+      answer_array.push(create_answer_params)
+    end
+  end
+
+  def elect_true(answer_array)
+    selected_index = rand(answer_array.size)
+    answer_array[selected_index] = create_answer_params(true)
+  end
 
   def show_spinner(msg_start, msg_end = "Concluído com sucesso!")
     spinner = TTY::Spinner.new("[:spinner] #{msg_start}") 
     spinner.auto_spin
     yield
     spinner.success("(#{msg_end})")     
-
   end
-     
-
 end
