@@ -5,3 +5,5 @@
 //= link admins_backoffice.js
 //= link users_backoffice.js
 //= link img.jpg
+//= link admin_devise.js
+//= link user_devise.js

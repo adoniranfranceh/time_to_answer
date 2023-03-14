@@ -18,5 +18,6 @@ module TimeToAnswer
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.web_console.white_listed_ips = '10.0.2.2'
   end
 end
