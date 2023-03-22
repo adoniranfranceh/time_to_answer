@@ -79,6 +79,13 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     cocoon (1.2.15)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -89,6 +96,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    execjs (2.8.1)
     faker (3.1.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
@@ -118,6 +126,7 @@ GEM
     kaminari-i18n (0.5.0)
       kaminari
       rails
+    libv8 (3.16.14.19-x86_64-linux)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -200,6 +209,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    ref (2.0.0)
     regexp_parser (2.7.0)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -235,6 +245,9 @@ GEM
     sqlite3 (1.6.1-x86_64-linux)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -277,7 +290,9 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   cocoon
+  coffee-rails
   devise
+  execjs
   faker
   i18n
   jbuilder (~> 2.7)
@@ -293,6 +308,7 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
+  therubyracer
   tty-spinner
   tzinfo-data
   web-console (>= 4.1.0)

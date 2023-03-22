@@ -1,13 +1,3 @@
-
-    
-  
-    
-
-   
-
-   
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +16,7 @@
   </head>
 
   <body class="login">
-    <h1>User Devise</h1>
+    <h1 style="text-align:center;">User Devise</h1>
 
     <%= yield %>
 
@@ -39,6 +29,19 @@
       <% flash.each do |key, value| %>
         <%= javascript_tag do %>
           $.bootstrapGrowl('<%= value %>', {
+            type: 'danger',
+            align: 'right',
+            allow_dismiss: true,
+            stackup_spacing: 10
+          });
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% unless resource.errors.empty? %>
+      <% resource.errors.full_messages.each do |msg| %>
+        <%= javascript_tag do %>
+          $.bootstrapGrowl('<%= msg %>', {
             type: 'danger',
             align: 'right',
             allow_dismiss: true,

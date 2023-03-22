@@ -36,6 +36,9 @@ gem 'i18n'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'cocoon'
+gem 'coffee-rails'
+gem 'therubyracer'
+gem 'execjs'
 
 
 group :development, :test do

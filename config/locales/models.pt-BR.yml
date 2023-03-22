@@ -36,4 +36,18 @@
         description: Descrição
         subject: Assunto  
         created_at: Creado em
-        updated_at: Atalizado em      
+        updated_at: Atalizado em   
+    errors:  
+      models: 
+        user:
+          attributes:
+            email:
+              blank: "em branco "
+            password:
+              blank: "em branco"     
+              too_short: "muito curta"
+
+            password_confirmation:
+              confirmation: "diferente"
+
+         
