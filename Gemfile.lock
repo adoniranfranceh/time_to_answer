@@ -296,7 +296,7 @@ DEPENDENCIES
   faker
   i18n
   jbuilder (~> 2.7)
-  jquery-rails (~> 4.3, >= 4.3.5)
+  jquery-rails
   kaminari
   kaminari-i18n
   listen (~> 3.3)

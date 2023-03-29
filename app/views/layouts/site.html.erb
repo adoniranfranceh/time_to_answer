@@ -31,7 +31,7 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav"></ul>
-            <%= form_with(url: site_search_path, local:true, method: :get ,class:"navbar-form navbar-left") do |form| %>
+            <%= form_with(url: site_search_path, local:false, method: :get ,class:"navbar-form navbar-left") do |form| %>
             
               <div class="form-group">
                 <%= form.text_field :term, class:"form-control", placeholder:"write something"%>

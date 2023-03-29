@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'tty-spinner'
 gem 'devise'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'jquery-rails'
 gem 'faker'
 gem 'i18n'
 gem 'kaminari'
